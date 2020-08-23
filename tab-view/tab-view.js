@@ -81,7 +81,7 @@ Component({
       this.startX  = this.goX = e.touches[0].clientX,this.startY = e.touches[0].clientY;
       this.tabStartTime = e.timeStamp;
       this.tabsCount = this.data.titles.length;
-      this.setData({isAnimate:false,showData:''});
+      this.setData({isAnimate:false});
     },
     tabBarScrollMove(e){
       let moveX = this.startX - e.touches[0].clientX;
