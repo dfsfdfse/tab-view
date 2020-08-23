@@ -63,7 +63,7 @@
 
 .tab-line {
   position: absolute;
-  bottom: 0;
+  top: 0;
   background-color: #2d80ff;
   height: 8rpx;
 }

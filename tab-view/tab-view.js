@@ -64,7 +64,6 @@ Component({
     leftArray:[0],
     isAnimate:true,
     windowWidth:0,
-    scrollLeft:0,
     tabScrollLeft:0,
     tabScrollLineGo:0
   },
@@ -77,9 +76,6 @@ Component({
       let activeTab = e.currentTarget.dataset.index;
       let {scrollContainerWidth} = this.data;
       this.setData({activeTab: activeTab,tabScrollLeft:scrollContainerWidth*activeTab});
-    },
-    tabScroll(e){
-      this.setData({scrollLeft:e.detail.scrollLeft});
     },
     tabBarScrollStart(e){
       this.startX  = this.goX = e.touches[0].clientX,this.startY = e.touches[0].clientY;
@@ -114,9 +110,9 @@ Component({
       let endTime = e.timeStamp,goTime = endTime - this.tabStartTime,changedX = this.goX-clientX;
       let {activeTab,tabScrollLeft,scrollContainerWidth} = this.data;
       //滑动距离大于  100  或者 滑动速度  大于 0.35 进行翻页
-      if((changedX>100||(goTime>100&&changedX/goTime>0.35))&&activeTab<this.tabsCount-1){
+      if((changedX>100||(goTime>130&&changedX/goTime>0.4))&&activeTab<this.tabsCount-1){
         activeTab++;
-      }else if((changedX<-100||(goTime>100&&changedX/goTime<-0.35))&&activeTab>0){
+      }else if((changedX<-130||(goTime>100&&changedX/goTime<-0.4))&&activeTab>0){
         activeTab--;
       }
       tabScrollLeft = scrollContainerWidth*activeTab;
