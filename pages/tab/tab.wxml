@@ -1,0 +1,6 @@
+<!--pages/tab/tab.wxml-->
+<tab-view  titles="{{['测试','cc','11']}}" containerHeight="400">
+    <tab-view tabBarClass="ces" titles="{{['dd','ee','gg']}}" containerHeight="300">
+    </tab-view>
+</tab-view>
+

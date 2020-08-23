@@ -1,0 +1,85 @@
+/* tab-view/tab-view.wxss */
+.tab-container {
+  background-color: #f1f1f1;
+  font-weight: 300;
+  font-size: 33rpx;
+  height: 400rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-animate{
+  transition: all 100ms ease;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  -ms-perspective: 1000;
+  perspective: 1000;
+}
+
+.tab-bar {
+  display: flex;
+  position: relative;
+  background-color: white;
+}
+
+.tab-bar-scroll{
+  display: flex;
+  position: relative;
+  white-space: nowrap;
+
+}
+.tab-bar-scroll::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.active-title{
+  color: #2d80ff;
+}
+
+.tab-title {
+  padding: 16rpx 70rpx 20rpx 70rpx;
+}
+
+.tab-title-default{
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+}
+
+.tab-title-default text{
+  word-break: keep-all;
+  white-space: nowrap;
+}
+
+.tab-line {
+  position: absolute;
+  bottom: 0;
+  background-color: #2d80ff;
+  height: 8rpx;
+}
+.tab-scroll{
+  position: relative;
+}
+
+.scroll-wrapper{
+  position: relative;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  display: flex;
+}
+
+.scroll-scene{
+  height: 100%;
+  text-align: center;
+}

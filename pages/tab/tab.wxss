@@ -1,0 +1,4 @@
+/* pages/tab/tab.wxss */
+.ces{
+    padding: 16rpx 50rpx 20rpx 50rpx;
+}
