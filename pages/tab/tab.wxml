@@ -1,6 +1,14 @@
 <!--pages/tab/tab.wxml-->
-<tab-view  titles="{{['测试','cc','11']}}" containerHeight="400">
-    <tab-view tabBarClass="ces" titles="{{['dd','ee','gg']}}" containerHeight="300">
+<tab-view  titles="{{['水果','海鲜','手机数码','休闲零食','酒水饮品']}}">
+    <tab-view tabBarClass="ces" titles="{{['苹果','梨子','桃子','香蕉','西瓜','柠檬','荔枝','火龙果']}}" containerHeight="400" tabBarWidth="200">
+    </tab-view>
+    <tab-view tabBarClass="ces" titles="{{['小龙虾','鲢鱼','大鱼','小鱼','鳖','乌龟','鲸鱼']}}" containerHeight="300">
+    </tab-view>
+    <tab-view tabBarClass="ces" titles="{{['大哥大','录音笔','复读机','小米10','华为mate30','小米手环5','32寸飞利浦显示器']}}" containerHeight="300">
+    </tab-view>
+    <tab-view tabBarClass="ces" titles="{{['月饼','粽子','糯米团','海带丝','肉松饼','老婆饼']}}" containerHeight="300">
+    </tab-view>
+    <tab-view tabBarClass="ces" titles="{{['舍得','泸州老窖','五粮液','脉动','茉莉花茶','伊利牛奶','蒙牛牛奶']}}" containerHeight="300">
     </tab-view>
 </tab-view>
 

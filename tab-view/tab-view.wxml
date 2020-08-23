@@ -2,7 +2,7 @@
 <view class="tab-container tabContainerClass" style="height: {{containerHeight}}px;width: {{containerWidth}}px">
     <view class="tab-bar">
         <scroll-view bindscroll="tabScroll" enhanced="true" scroll-x class="tab-bar-scroll" style="width: {{tabBarWidth}}px">
-            <view catchtouchstart="tapTabBar" wx:for="{{titles}}" class="tabBarClass {{tabBarClass!=''?tabBarClass:'tab-title'}} tab-title-default {{index==activeTab?'active-title':''}}" data-index="{{index}}"  wx:key="index">
+            <view bindtap="tapTabBar" wx:for="{{titles}}" class="tabBarClass {{tabBarClass!=''?tabBarClass:'tab-title'}} tab-title-default {{index==activeTab?'active-title':''}}" data-index="{{index}}"  wx:key="index">
                 <text>{{item}}</text>
             </view>
         </scroll-view>
@@ -10,7 +10,7 @@
               style="width: {{lineWidth[activeTab]}}px;left: {{leftArray[activeTab]-scrollLeft-tabBarLeft+tabScrollLineGo}}px"></view>
     </view>
     <view class="tab-scroll" style="height: {{containerHeight-tabBarHeight}}px;width: {{scrollContainerWidth}}px;">
-        <view class="scroll-wrapper {{isAnimate?'scroll-animate':''}};" catchtouchstart="tabBarScrollStart" catchtouchmove="tabBarScrollMove"
+        <view class="scroll-wrapper {{isAnimate?'scroll-animate':''}};" bindtouchstart="tabBarScrollStart" catchtouchmove="tabBarScrollMove"
               catchtouchend="tabBarScrollEnd" style="left:-{{tabScrollLeft}}px;width: {{scrollContainerWidth*titles.length}}px">
             <slot></slot>
         </view>
