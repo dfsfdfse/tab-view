@@ -5,3 +5,5 @@
 
 <br>
 样式源码源自(https://github.com/zhongjie-chen/wx-scrollable-tab-view)
+
+还有些细小的参数可以看一看源码微调一下
