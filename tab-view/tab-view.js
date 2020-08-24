@@ -65,13 +65,17 @@ Component({
     isAnimate:true,
     windowWidth:0,
     tabScrollLeft:0,
-    tabScrollLineGo:0
+    tabScrollLineGo:0,
+    tabLeft:0
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+    tabScroll(e){
+      this.setData({tabLeft:e.detail.scrollLeft})
+    },
     tapTabBar(e){
       let activeTab = e.currentTarget.dataset.index;
       let {scrollContainerWidth} = this.data;
@@ -84,15 +88,16 @@ Component({
       this.setData({isAnimate:false});
     },
     tabBarScrollMove(e){
-      let moveX = this.startX - e.touches[0].clientX;
-      let hasGo = this.goX - e.touches[0].clientX;
+      let x = e.touches[0].clientX;
+      let moveX = this.startX - x;
+      this.startX = x;
+      let hasGo = this.goX - x;
       let {lineWidth,activeTab,scrollContainerWidth,tabScrollLineGo} = this.data;
       if(hasGo>=0){
         tabScrollLineGo = (lineWidth[activeTab+1]/scrollContainerWidth)*hasGo;
       }else {
         tabScrollLineGo = (lineWidth[activeTab-1]/scrollContainerWidth)*hasGo
       }
-      this.startX = e.touches[0].clientX;
       let offset = this.data.tabScrollLeft,
           maxOffset = this.data.scrollContainerWidth*(this.tabsCount-1)
       offset+=moveX;
@@ -106,9 +111,9 @@ Component({
       this.setData({tabScrollLeft:offset,tabScrollLineGo:tabScrollLineGo});
     },
     tabBarScrollEnd(e){
-      let {clientX,clientY} = e.changedTouches[0];
+      let {clientX} = e.changedTouches[0];
       let endTime = e.timeStamp,goTime = endTime - this.tabStartTime,changedX = this.goX-clientX;
-      let {activeTab,tabScrollLeft,scrollContainerWidth} = this.data;
+      let {activeTab,tabScrollLeft,scrollContainerWidth,tabLeft,tabBarWidth,lineWidth,initLeftArray} = this.data;
       //滑动距离大于  100  或者 滑动速度  大于 0.35 进行翻页
       if((changedX>100||(goTime>130&&changedX/goTime>0.4))&&activeTab<this.tabsCount-1){
         activeTab++;
