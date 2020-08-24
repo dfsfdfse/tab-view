@@ -1,0 +1,4 @@
+<!--tab-view-item/tab-view-item.wxml-->
+<view style="width: {{scrollContainerWidth}}px">
+    <slot></slot>
+</view>

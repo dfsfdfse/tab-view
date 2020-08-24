@@ -1,7 +1,7 @@
 <!--tab-view/tab-view.wxml-->
 <view class="tab-container tabContainerClass" style="height: {{containerHeight}}px;width: {{containerWidth}}px">
     <view class="tab-bar">
-        <scroll-view enhanced="true" catchscroll="tabScroll" scroll-into-view="scroll{{activeTab}}" scroll-x class="tab-bar-scroll" style="width: {{tabBarWidth}}px">
+        <scroll-view enhanced="true" catchscroll="tabScroll" scroll-into-view="scroll{{activeTab}}" scroll-with-animation="true" scroll-x class="tab-bar-scroll" style="width: {{tabBarWidth}}px">
             <view bindtap="tapTabBar" wx:for="{{titles}}" id="scroll{{index}}" class="tabBarClass {{tabBarClass!=''?tabBarClass:'tab-title'}} tab-title-default {{index==activeTab?'active-title':''}}" data-index="{{index}}"  wx:key="index">
                 <text>{{item}}</text>
             </view>

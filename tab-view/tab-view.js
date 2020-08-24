@@ -1,5 +1,13 @@
 // tab-view/tab-view.js
 Component({
+  relations:{
+    '../tab-view-item/tab-view-item':{
+      type:'child',
+      linked(target) {
+
+      }
+    }
+  },
   /**
    * 组件的属性列表
    */
@@ -44,6 +52,7 @@ Component({
       containerWidth = containerWidth||windowWidth;
       tabBarWidth=tabBarWidth||containerWidth;
       scrollContainerWidth = scrollContainerWidth||containerWidth;
+      this.triggerEvent('listenContainerWidth',{containerWidth:scrollContainerWidth});
       this.setData({windowWidth:windowWidth, containerWidth:containerWidth, tabBarWidth:tabBarWidth, scrollContainerWidth:scrollContainerWidth})
       query.selectAll('.tab-title-default').boundingClientRect(res=>{
         this.setData({lineWidth:res.map(d=>d.width),leftArray:res.map(d=>d.left)});
@@ -73,6 +82,9 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    changeChildWidth(e){
+
+    },
     tabScroll(e){
       this.setData({tabLeft:e.detail.scrollLeft})
     },

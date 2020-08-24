@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "tab-view":"../../tab-view/tab-view"
+    "tab-view":"../../tab-view/tab-view",
+    "tab-view-item": "../../tab-view-item/tab-view-item"
   }
 }
