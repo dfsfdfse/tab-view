@@ -1,5 +1,5 @@
 # tab-view
-微信小程序可滚动 tab-view 可嵌套组件
+微信小程序 tab-view 可滚动 可嵌套 可联动 组件
 ### 效果
 ![Image text](tab-view-code.gif)
 ![Image text](intro.jpg)
