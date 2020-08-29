@@ -1,4 +1,4 @@
 <!--tab-view-item/tab-view-item.wxml-->
-<view style="width: {{scrollContainerWidth}}px">
+<scroll-view scroll-x="{{canScrollX}}" scroll-y="{{canScroll}}" enable-flex="{{isFlex}}" bindscrollMove="getMove" bindscroll="itemScroll"  class="tab-view-item-default {{itemClass}}" style="width: {{scrollContainerWidth}}px;height: {{selfContainerHeight}}px;">
     <slot></slot>
-</view>
+</scroll-view>

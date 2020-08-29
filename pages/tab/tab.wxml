@@ -1,50 +1,26 @@
 
     <!--pages/tab/tab.wxml-->
-    <tab-view  titles="{{['水果','海鲜','手机数码','休闲零食','酒水饮品']}}">
-        <tab-view tabBarClass="ces" titles="{{['苹果','梨子','桃子','香蕉','西瓜','柠檬','荔枝','火龙果']}}" containerHeight="400" tabBarWidth="200">
-            <tab-view-item>苹果</tab-view-item>
-            <tab-view-item>梨子</tab-view-item>
-            <tab-view-item>桃子</tab-view-item>
-            <tab-view-item>香蕉</tab-view-item>
-            <tab-view-item>西瓜</tab-view-item>
-            <tab-view-item>柠檬</tab-view-item>
-            <tab-view-item>荔枝</tab-view-item>
-            <tab-view-item>火龙果</tab-view-item>
-        </tab-view>
-        <tab-view tabBarClass="ces" titles="{{['小龙虾','鲢鱼','大鱼','小鱼','鳖','乌龟','鲸鱼']}}" containerHeight="300">
-            <tab-view-item>小龙虾</tab-view-item>
-            <tab-view-item>鲢鱼</tab-view-item>
-            <tab-view-item>大鱼</tab-view-item>
-            <tab-view-item>小鱼</tab-view-item>
-            <tab-view-item>鳖</tab-view-item>
-            <tab-view-item>乌龟</tab-view-item>
-            <tab-view-item>鲸鱼</tab-view-item>
-        </tab-view>
-        <tab-view tabBarClass="ces" titles="{{['大哥大','录音笔','复读机','小米10','华为mate30','小米手环5','32寸飞利浦显示器']}}" containerHeight="300">
-            <tab-view-item>大哥大</tab-view-item>
-            <tab-view-item>录音笔</tab-view-item>
-            <tab-view-item>复读机</tab-view-item>
-            <tab-view-item>小米10</tab-view-item>
-            <tab-view-item>华为mate30</tab-view-item>
-            <tab-view-item>小米手环5</tab-view-item>
-            <tab-view-item>32寸飞利浦显示器</tab-view-item>
-        </tab-view>
-        <tab-view tabBarClass="ces" titles="{{['月饼','粽子','糯米团','海带丝','肉松饼','老婆饼']}}" containerHeight="300">
-            <tab-view-item>月饼</tab-view-item>
-            <tab-view-item>粽子</tab-view-item>
-            <tab-view-item>糯米团</tab-view-item>
-            <tab-view-item>海带丝</tab-view-item>
-            <tab-view-item>肉松饼</tab-view-item>
-            <tab-view-item>老婆饼</tab-view-item>
-        </tab-view>
-        <tab-view tabBarClass="ces" titles="{{['舍得','泸州老窖','五粮液','脉动','茉莉花茶','伊利牛奶','蒙牛牛奶']}}" containerHeight="300">
-            <tab-view-item>舍得</tab-view-item>
-            <tab-view-item>泸州老窖</tab-view-item>
-            <tab-view-item>五粮液</tab-view-item>
-            <tab-view-item>脉动</tab-view-item>
-            <tab-view-item>茉莉花茶</tab-view-item>
-            <tab-view-item>伊利牛奶</tab-view-item>
-            <tab-view-item>蒙牛牛奶</tab-view-item>
-        </tab-view>
+    <tab-view>
+        <tab-view-item title="水果">
+            <tab-view>
+                <tab-view-item title="苹果">苹果</tab-view-item>
+                <tab-view-item title="梨">梨</tab-view-item>
+                <tab-view-item title="桃子">桃子</tab-view-item>
+                <tab-view-item title="杏子">杏子</tab-view-item>
+                <tab-view-item title="荔枝">荔枝</tab-view-item>
+                <tab-view-item title="葡萄">葡萄</tab-view-item>
+            </tab-view>
+        </tab-view-item>
+        <tab-view-item title="电子产品">
+            <tab-view>
+                <tab-view-item title="手机">手机</tab-view-item>
+                <tab-view-item title="电脑">电脑</tab-view-item>
+                <tab-view-item title="数码相机">数码相机</tab-view-item>
+                <tab-view-item title="手环">手环</tab-view-item>
+                <tab-view-item title="音响">音响</tab-view-item>
+                <tab-view-item title="耳机">耳机</tab-view-item>
+                <tab-view-item title="冰箱">冰箱</tab-view-item>
+            </tab-view>
+        </tab-view-item>
     </tab-view>
 

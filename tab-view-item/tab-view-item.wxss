@@ -1,1 +1,4 @@
 /* tab-view-item/tab-view-item.wxss */
+.tab-view-item-default{
+    padding: 0;
+}

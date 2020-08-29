@@ -1,17 +1,45 @@
-<!--tab-view/tab-view.wxml-->
-<view class="tab-container tabContainerClass" style="height: {{containerHeight}}px;width: {{containerWidth}}px">
-    <view class="tab-bar">
-        <scroll-view enhanced="true" catchscroll="tabScroll" scroll-into-view="scroll{{activeTab}}" scroll-with-animation="true" scroll-x class="tab-bar-scroll" style="width: {{tabBarWidth}}px">
-            <view bindtap="tapTabBar" wx:for="{{titles}}" id="scroll{{index}}" class="tabBarClass {{tabBarClass!=''?tabBarClass:'tab-title'}} tab-title-default {{index==activeTab?'active-title':''}}" data-index="{{index}}"  wx:key="index">
+<!--解决事件冒泡问题-->
+<wxs module="tab">
+    var startX;
+    module.exports = {
+        scrollStart:function (e, ins) {
+            startX = e.touches[0].clientX;
+            ins.callMethod('tabBarScrollStart',e);
+            return true;
+        },
+        scrollMove:function (e, ins) {
+            var curX = e.touches[0].clientX;
+            var active = e.currentTarget.dataset.active,count = e.currentTarget.dataset.count;
+            if((curX>startX&&active==0)||(curX<startX&&active==count-1)){
+                return true;
+            }
+            ins.callMethod('tabBarScrollMove',e);
+            return false;
+        },
+        scrollEnd:function (e, ins) {
+            var curX = e.changedTouches[0].clientX;
+            var active = e.currentTarget.dataset.active,count = e.currentTarget.dataset.count;
+            ins.callMethod('tabBarScrollEnd',e);
+            if((curX>startX&&active==0)||(curX<startX&&active==count-1)){
+                return true;
+            }
+            return false;
+        }
+    }
+</wxs>
+<view class="tab-container" style="width: {{containerWidth}}px;height: {{containerHeight}}px">
+    <view class="tab-bar {{tabBarContainerClass}}">
+        <scroll-view enhanced="true" catchscroll="tabScroll" scroll-into-view="scroll{{activeTab}}" scroll-with-animation="true" scroll-x class="tab-bar-scroll" style="width: {{tabBarWidth-tabBarFixedLeft}}px;left:{{tabBarFixedLeft}}px">
+            <view bindtap="tapTabBar" wx:for="{{titles}}" id="scroll{{index}}" class="{{tabBarClass}} tab-title {{index==activeTab&&'active-title'}}" data-index="{{index}}"  wx:key="index">
                 <text>{{item}}</text>
             </view>
             <view class="tab-line {{isAnimate?'scroll-animate':''}}"
-                  style="width: {{lineWidth[activeTab]}}px;left: {{leftArray[activeTab]-tabBarLeft+tabScrollLineGo}}px"></view>
+                  style="width: {{lineWidth[activeTab]}}px;left: {{leftArray[activeTab]-tabBarFixedLeft-tabBarLeft+tabScrollLineGo}}px"></view>
         </scroll-view>
     </view>
-    <view class="tab-scroll" style="height: {{containerHeight-tabBarHeight}}px;width: {{scrollContainerWidth}}px;">
-        <view class="scroll-wrapper {{isAnimate?'scroll-animate':''}};" bindtouchstart="tabBarScrollStart" catchtouchmove="tabBarScrollMove"
-              catchtouchend="tabBarScrollEnd" style="left:-{{tabScrollLeft}}px;width: {{scrollContainerWidth*titles.length}}px">
+    <view class="tab-scroll" style="width: {{scrollContainerWidth}}px;">
+        <view data-active="{{activeTab}}" data-count="{{titles.length}}" class="scroll-wrapper {{isAnimate?'scroll-animate':''}};" bindtouchstart="{{tab.scrollStart}}" bindtouchmove="{{tab.scrollMove}}"
+              bindtouchend="{{tab.scrollEnd}}" style="left:-{{tabScrollLeft}}px;width: {{scrollContainerWidth*titles.length}}px">
             <slot></slot>
         </view>
     </view>
