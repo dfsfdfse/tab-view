@@ -139,9 +139,9 @@ Component({
       let {canChangePage,activeTab,tabScrollLeft,scrollContainerWidth} = this.data;
       //滑动距离大于  140  或者 滑动速度  大于 0.4 进行翻页 canChangePage 是否能够通过滚动改变页签
       if(canChangePage){
-        if((changedX>100||(changedX>70&&changedX/goTime>0.4))&&activeTab<this.tabsCount-1){
+        if((changedX>90||(changedX>30&&changedX/goTime>0.32))&&activeTab<this.tabsCount-1){
           activeTab++;
-        }else if((changedX<-100||(changedX>70&&changedX/goTime<-0.4))&&activeTab>0){
+        }else if((changedX<-90||(changedX>30&&changedX/goTime<-0.32))&&activeTab>0){
           activeTab--;
         }
       }
