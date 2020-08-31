@@ -1,25 +1,9 @@
 
     <!--pages/tab/tab.wxml-->
     <tab-view>
-        <tab-view-item title="水果">
+        <tab-view-item title="{{item.name}}" wx:for="{{titles}}" wx:key="unique">
             <tab-view>
-                <tab-view-item title="苹果">苹果</tab-view-item>
-                <tab-view-item title="梨">梨</tab-view-item>
-                <tab-view-item title="桃子">桃子</tab-view-item>
-                <tab-view-item title="杏子">杏子</tab-view-item>
-                <tab-view-item title="荔枝">荔枝</tab-view-item>
-                <tab-view-item title="葡萄">葡萄</tab-view-item>
-            </tab-view>
-        </tab-view-item>
-        <tab-view-item title="电子产品">
-            <tab-view>
-                <tab-view-item title="手机">手机</tab-view-item>
-                <tab-view-item title="电脑">电脑</tab-view-item>
-                <tab-view-item title="数码相机">数码相机</tab-view-item>
-                <tab-view-item title="手环">手环</tab-view-item>
-                <tab-view-item title="音响">音响</tab-view-item>
-                <tab-view-item title="耳机">耳机</tab-view-item>
-                <tab-view-item title="冰箱">冰箱</tab-view-item>
+                <tab-view-item title="{{it}}" wx:for="{{item.arr}}" wx:for-item="it" wx:key="unique">{{it}}</tab-view-item>
             </tab-view>
         </tab-view-item>
     </tab-view>

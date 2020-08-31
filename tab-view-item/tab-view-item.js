@@ -10,14 +10,12 @@ Component({
   },
   lifetimes:{
     ready() {
-      this.createSelectorQuery().select('.tab-view-item-default').boundingClientRect(res=>{
-        let {scrollContainerWidth,containerHeight} = this.data.parentTarget.data;
-        this.setData({scrollContainerWidth:scrollContainerWidth,selfContainerHeight:containerHeight-res.height});
-      }).exec();
+      let {parentTarget,scrollWidth} = this.data;
+      let {scrollContainerWidth}=parentTarget.data;
+      if(!scrollWidth){
+        this.setData({scrollWidth:scrollContainerWidth})
+      }
     }
-  },
-  pageLifetimes:{
-    
   },
   /**
    * 组件的属性列表
@@ -27,10 +25,10 @@ Component({
     itemClass:{
       type:String
     },
-    scrollContainerWidth:{
+    scrollWidth:{
       type:String
     },
-    scrollContainerHeight:{
+    scrollHeight:{
       type:String
     },
     isFlex:{
@@ -50,8 +48,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    parentTarget:{},
-    selfContainerHeight:0
+    parentTarget:undefined
   },
   options:{
     addGlobalClass:true

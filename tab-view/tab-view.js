@@ -4,9 +4,10 @@ Component({
     '../tab-view-item/tab-view-item':{
       type:'child',
       linked(target) {
-        let {titles} = this.data;
+        let {titles,childrenTarget} = this.data;
+        childrenTarget.push(target);
         titles.push(target.data.title);
-        this.setData({titles:titles});
+        this.setData({titles:titles,childrenTarget:childrenTarget});
       }
     }
   },
@@ -58,7 +59,7 @@ Component({
   },
   lifetimes: {
     ready() {
-      let {containerHeight,containerWidth,tabBarWidth,scrollContainerWidth} = this.data;
+      let {containerHeight,containerWidth,tabBarWidth,scrollContainerWidth,childrenTarget} = this.data;
       let query = this.createSelectorQuery();
       tabBarWidth = tabBarWidth||containerWidth;
       scrollContainerWidth = scrollContainerWidth||containerWidth;
@@ -68,6 +69,11 @@ Component({
       }).exec();
       query.select('.tab-bar').boundingClientRect(res=>{
         this.triggerEvent('tabBarInit',res);
+        for(let item in childrenTarget){
+          if(!childrenTarget[item].data.scrollHeight){
+            childrenTarget[item].setData({scrollHeight:containerHeight-res.height})
+          }
+        }
         this.setData({tabBarHeight:res.height,tabBarLeft:res.left});
       }).exec();
     }
@@ -87,7 +93,8 @@ Component({
     tabScrollLeft:0,
     tabScrollLineGo:0,
     tabLeft:0,
-    childCanScroll:true
+    childCanScroll:true,
+    childrenTarget:[]
   },
 
   /**
@@ -139,9 +146,9 @@ Component({
       let {canChangePage,activeTab,tabScrollLeft,scrollContainerWidth} = this.data;
       //滑动距离大于  140  或者 滑动速度  大于 0.4 进行翻页 canChangePage 是否能够通过滚动改变页签
       if(canChangePage){
-        if((changedX>90||(changedX>30&&changedX/goTime>0.32))&&activeTab<this.tabsCount-1){
+        if((changedX>70||(changedX>30&&changedX/goTime>0.30))&&activeTab<this.tabsCount-1){
           activeTab++;
-        }else if((changedX<-90||(changedX>30&&changedX/goTime<-0.32))&&activeTab>0){
+        }else if((changedX<-70||(changedX>30&&changedX/goTime<-0.30))&&activeTab>0){
           activeTab--;
         }
       }
