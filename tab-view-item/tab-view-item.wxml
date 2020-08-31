@@ -1,5 +1,5 @@
 <!--tab-view-item/tab-view-item.wxml-->
-<scroll-view scroll-x="{{canScrollX}}" scroll-y="{{canScroll}}" enable-flex="{{isFlex}}" bindscrollMove="getMove" bindscroll="itemScroll"  class="tab-view-item-default {{itemClass}}" style="width: {{scrollContainerWidth}}px;height: {{scrollHeight}}px;">
+<scroll-view scroll-x="{{canScrollX}}" scroll-y="{{canScroll}}" enable-flex="{{isFlex}}" bindscrollMove="getMove" bindscroll="itemScroll"  class="tab-view-item-default {{itemClass}}" style="width: {{scrollWidth}}px;height: {{scrollHeight}}px;">
     <slot></slot>
 </scroll-view>
 

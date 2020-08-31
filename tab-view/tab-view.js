@@ -153,11 +153,11 @@ Component({
         }
       }
       tabScrollLeft = scrollContainerWidth*activeTab;
-      this.goPosition = undefined;
-      this.setData({activeTab:activeTab,tabScrollLeft:tabScrollLeft,isAnimate:true,tabScrollLineGo:0,childCanScroll:true});
+      this.setData({activeTab:activeTab,tabScrollLeft:tabScrollLeft,tabScrollLineGo:0,childCanScroll:true});
     },
     animate(animate){
-      this.setData({isAnimate:animate})
+      this.goPosition = undefined;
+      this.setData({isAnimate:animate});
     }
   }
 })
